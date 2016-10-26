@@ -41,6 +41,10 @@ class SettingsTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SliderCellIdentifier, for: indexPath)
+            
+            if let sliderCell: SliderTableViewCell = cell as? SliderTableViewCell {
+                sliderCell.updateSlider(min: 1, max: 200, current: 20)
+            }
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SegmentedControlCellIdentifier, for: indexPath)
         default:

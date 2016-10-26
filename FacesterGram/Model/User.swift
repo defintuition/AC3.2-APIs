@@ -109,11 +109,32 @@ internal struct User {
             
             return usersToReturn
         }
-        // TODO: add better handling of the thrown error
+        catch let UserModelParseError.results(json: json) {
+            print("Error encountered with parsing 'results' key for object: \(json)")
+        }
+        catch let UserModelParseError.name(json: json) {
+            print("Error encountered with parsing 'name' key for object: \(json)")
+        }
+        catch let UserModelParseError.location(json: json) {
+            print("Error encountered with parsing 'location' key for object: \(json)")
+        }
+        catch let UserModelParseError.login(json: json) {
+            print("Error encountered with parsing 'login' key for object: \(json)")
+        }
+        catch let UserModelParseError.id(json: json) {
+            print("Error encountered with parsing 'id' key for object: \(json)")
+        }
+        catch let UserModelParseError.pictures(json: json) {
+            print("Error encountered with parsing 'pictures' key for object: \(json)")
+        }
+        catch let UserModelParseError.email(json: json) {
+            print("Error encountered with parsing 'email' key for object: \(json)")
+        }
         catch {
             print("Error encountered with parsing: \(error)")
         }
         
+        print("returning nil")
         return nil
     }
     

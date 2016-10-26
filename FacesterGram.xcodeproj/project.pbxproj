@@ -17,6 +17,7 @@
 		146EFA1C1DBAED5600592B9A /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */; };
 		146EFA511DBECBBA00592B9A /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA501DBECBBA00592B9A /* SettingsManager.swift */; };
 		146EFA531DBECC2B00592B9A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA521DBECC2B00592B9A /* SettingsTableViewController.swift */; };
+		14DA321A1DC1450A00F88E50 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA32191DC1450A00F88E50 /* SliderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIRequestManager.swift; path = Managers/APIRequestManager.swift; sourceTree = "<group>"; };
 		146EFA501DBECBBA00592B9A /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsManager.swift; path = Managers/SettingsManager.swift; sourceTree = "<group>"; };
 		146EFA521DBECC2B00592B9A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = "View Controllers/SettingsTableViewController.swift"; sourceTree = "<group>"; };
+		14DA32191DC1450A00F88E50 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderTableViewCell.swift; path = Views/SliderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				146EFA1D1DBAED5D00592B9A /* Managers */,
-				146EFA1A1DBAED1A00592B9A /* View Controllers */,
 				146EFA191DBAED1300592B9A /* Model */,
+				14DA321B1DC1450E00F88E50 /* Views */,
+				146EFA1A1DBAED1A00592B9A /* View Controllers */,
 				146EFA141DBAEBA000592B9A /* Supporting Files */,
 			);
 			path = FacesterGram;
@@ -140,6 +143,14 @@
 				146EFA501DBECBBA00592B9A /* SettingsManager.swift */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		14DA321B1DC1450E00F88E50 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				14DA32191DC1450A00F88E50 /* SliderTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 				146EFA511DBECBBA00592B9A /* SettingsManager.swift in Sources */,
 				146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */,
 				146EF9F51DB9830E00592B9A /* AppDelegate.swift in Sources */,
+				14DA321A1DC1450A00F88E50 /* SliderTableViewCell.swift in Sources */,
 				146EFA181DBAED0D00592B9A /* User.swift in Sources */,
 				146EFA531DBECC2B00592B9A /* SettingsTableViewController.swift in Sources */,
 			);
