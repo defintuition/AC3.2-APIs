@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SliderCellDelegate: class {
+    func sliderValueChanged(_ value: Int)
+}
+
 class SliderTableViewCell: UITableViewCell {
+    internal weak var delegate: SliderCellDelegate?
+    
     static let cellIdentifier: String = "SliderCell"
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var numberOfResultsLabel: UILabel!
@@ -23,5 +29,6 @@ class SliderTableViewCell: UITableViewCell {
 
     @IBAction func didChangeValue(_ sender: UISlider) {
         self.numberOfResultsLabel.text = "\(Int(sender.value))"
+        self.delegate?.sliderValueChanged(Int(sender.value))
     }
 }

@@ -43,7 +43,12 @@ class SettingsTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SliderCellIdentifier, for: indexPath)
             
             if let sliderCell: SliderTableViewCell = cell as? SliderTableViewCell {
-                sliderCell.updateSlider(min: 1, max: 200, current: 20)
+                sliderCell.updateSlider(min: SettingsManager.manager.minResults,
+                                        max: SettingsManager.manager.maxResults,
+                                        current: SettingsManager.manager.results)
+                
+                // ok lets see what happens when you set the delegation 
+                sliderCell.delegate = SettingsManager.manager
             }
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SegmentedControlCellIdentifier, for: indexPath)
