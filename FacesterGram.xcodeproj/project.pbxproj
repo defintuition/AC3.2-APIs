@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		146EF9F51DB9830E00592B9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EF9F41DB9830E00592B9A /* AppDelegate.swift */; };
 		146EF9FA1DB9830E00592B9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146EF9F81DB9830E00592B9A /* Main.storyboard */; };
-		146EF9FC1DB9830E00592B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146EF9FB1DB9830E00592B9A /* Assets.xcassets */; };
 		146EF9FF1DB9830E00592B9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146EF9FD1DB9830E00592B9A /* LaunchScreen.storyboard */; };
 		146EFA0A1DB9830E00592B9A /* FacesterGramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA091DB9830E00592B9A /* FacesterGramTests.swift */; };
 		146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EFA151DBAECED00592B9A /* UsersTableViewController.swift */; };
@@ -31,7 +30,6 @@
 		146EF9F11DB9830E00592B9A /* FacesterGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacesterGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146EF9F41DB9830E00592B9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		146EF9F91DB9830E00592B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		146EF9FB1DB9830E00592B9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		146EF9FE1DB9830E00592B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		146EFA001DB9830E00592B9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		146EFA051DB9830E00592B9A /* FacesterGramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacesterGramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +103,6 @@
 			children = (
 				146EF9F41DB9830E00592B9A /* AppDelegate.swift */,
 				146EF9F81DB9830E00592B9A /* Main.storyboard */,
-				146EF9FB1DB9830E00592B9A /* Assets.xcassets */,
 				146EF9FD1DB9830E00592B9A /* LaunchScreen.storyboard */,
 				146EFA001DB9830E00592B9A /* Info.plist */,
 			);
@@ -220,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				146EF9FF1DB9830E00592B9A /* LaunchScreen.storyboard in Resources */,
-				146EF9FC1DB9830E00592B9A /* Assets.xcassets in Resources */,
 				146EF9FA1DB9830E00592B9A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
