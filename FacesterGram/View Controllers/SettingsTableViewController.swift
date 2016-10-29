@@ -9,10 +9,6 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
-    private static let SettingsTableViewCellIdentifier: String = "SettingsTableViewCellIdentifier"
-    private static let SwitchCellIdentifier: String = "SwitchCell"
-    private static let SegmentedControlCellIdentifier: String = "SegmentedControlCell"
-    private static let SliderCellIdentifier: String = "SliderCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +36,7 @@ class SettingsTableViewController: UITableViewController {
         var cell: UITableViewCell
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SliderCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: SliderTableViewCell.cellIdentifier, for: indexPath)
             
             if let sliderCell: SliderTableViewCell = cell as? SliderTableViewCell {
                 sliderCell.updateSlider(min: SettingsManager.manager.minResults,
@@ -51,9 +47,15 @@ class SettingsTableViewController: UITableViewController {
                 sliderCell.delegate = SettingsManager.manager
             }
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SegmentedControlCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: SliderTableViewCell.cellIdentifier, for: indexPath)
+            
+            if let segmentedCell: SegmentedTableViewCell = cell as? SegmentedTableViewCell {
+                segmentedCell.updateSelectedSegment(gender: SettingsManager.manager.gender)
+                segmentedCell.delegate = SettingsManager.manager
+            }
+            
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewController.SwitchCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
         }
         
         return cell

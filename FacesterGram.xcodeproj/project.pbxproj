@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140872D51DC410CB00C55A83 /* RandomUserURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140872D41DC410CB00C55A83 /* RandomUserURLFactory.swift */; };
+		145DDFB21DC4145900119A05 /* SegmentedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145DDFB11DC4145900119A05 /* SegmentedTableViewCell.swift */; };
+		145DDFB41DC41AB100119A05 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145DDFB31DC41AB100119A05 /* SwitchTableViewCell.swift */; };
 		146EF9F51DB9830E00592B9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EF9F41DB9830E00592B9A /* AppDelegate.swift */; };
 		146EF9FA1DB9830E00592B9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146EF9F81DB9830E00592B9A /* Main.storyboard */; };
 		146EF9FC1DB9830E00592B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146EF9FB1DB9830E00592B9A /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140872D41DC410CB00C55A83 /* RandomUserURLFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomUserURLFactory.swift; path = Managers/RandomUserURLFactory.swift; sourceTree = "<group>"; };
+		145DDFB11DC4145900119A05 /* SegmentedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedTableViewCell.swift; path = Views/SegmentedTableViewCell.swift; sourceTree = "<group>"; };
+		145DDFB31DC41AB100119A05 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		146EF9F11DB9830E00592B9A /* FacesterGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacesterGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146EF9F41DB9830E00592B9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		146EF9F91DB9830E00592B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 			children = (
 				146EFA1B1DBAED5600592B9A /* APIRequestManager.swift */,
 				146EFA501DBECBBA00592B9A /* SettingsManager.swift */,
+				140872D41DC410CB00C55A83 /* RandomUserURLFactory.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				14DA32191DC1450A00F88E50 /* SliderTableViewCell.swift */,
+				145DDFB11DC4145900119A05 /* SegmentedTableViewCell.swift */,
+				145DDFB31DC41AB100119A05 /* SwitchTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -256,11 +265,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140872D51DC410CB00C55A83 /* RandomUserURLFactory.swift in Sources */,
 				146EFA1C1DBAED5600592B9A /* APIRequestManager.swift in Sources */,
 				146EFA511DBECBBA00592B9A /* SettingsManager.swift in Sources */,
 				146EFA161DBAECED00592B9A /* UsersTableViewController.swift in Sources */,
 				146EF9F51DB9830E00592B9A /* AppDelegate.swift in Sources */,
 				14DA321A1DC1450A00F88E50 /* SliderTableViewCell.swift in Sources */,
+				145DDFB21DC4145900119A05 /* SegmentedTableViewCell.swift in Sources */,
+				145DDFB41DC41AB100119A05 /* SwitchTableViewCell.swift in Sources */,
 				146EFA181DBAED0D00592B9A /* User.swift in Sources */,
 				146EFA531DBECC2B00592B9A /* SettingsTableViewController.swift in Sources */,
 			);

@@ -15,7 +15,7 @@ protocol SliderCellDelegate: class {
 class SliderTableViewCell: UITableViewCell {
     internal weak var delegate: SliderCellDelegate?
     
-    static let cellIdentifier: String = "SliderCell"
+    static let cellIdentifier: String = "SliderCellIdentifier"
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var numberOfResultsLabel: UILabel!
     

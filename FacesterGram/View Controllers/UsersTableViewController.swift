@@ -27,22 +27,25 @@ class UsersTableViewController: UITableViewController {
     }
     
     internal func loadUsers() {
-        APIRequestManager.manager.getRandomUserData { (data) in
-            if data != nil {
-                
-                if let users = User.users(from: data!) {
-                    print("We've got users! \(users)")
-                    
-                    self.users = users
-                    
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-            
-            self.refreshControl?.endRefreshing()
+        // using our "Advanced" solution to get users
+        APIRequestManager.manager.getUsers(count: SettingsManager.manager.results,
+                                           gender: SettingsManager.manager.gender,
+                                           nationality: SettingsManager.manager.nationality) { (data: Data?) in
+                                            if data != nil {
+                                                
+                                                if let users = User.users(from: data!) {
+                                                    print("We've got users! \(users)")
+                                                    
+                                                    self.users = users
+                                                    
+                                                    
+                                                    DispatchQueue.main.async {
+                                                        self.tableView.reloadData()
+                                                    }
+                                                }
+                                            }
+                                            self.refreshControl?.endRefreshing()
+                                            
         }
     }
     

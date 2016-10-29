@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" rowHeight="60" id="cpS-pT-4Lc" customClass="SliderTableViewCell" customModule="FacesterGram" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCellIdentifier" rowHeight="60" id="cpS-pT-4Lc" customClass="SliderTableViewCell" customModule="FacesterGram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cpS-pT-4Lc" id="HyV-f3-U05">
@@ -121,7 +121,7 @@
                                     <outlet property="slider" destination="poS-AA-Ysu" id="TIx-BD-oqH"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentedControlCell" rowHeight="60" id="56C-N8-qTH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentedSelectionCellIdentifier" rowHeight="60" id="56C-N8-qTH" customClass="SegmentedTableViewCell" customModule="FacesterGram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="56C-N8-qTH" id="2gk-2v-STy">
@@ -137,6 +137,9 @@
                                                 <segment title="Male"/>
                                                 <segment title="Female"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="selectedSegmentDidChange:" destination="56C-N8-qTH" eventType="valueChanged" id="EVj-Ux-VMI"/>
+                                            </connections>
                                         </segmentedControl>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-lH-1k6">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -152,8 +155,11 @@
                                         <constraint firstItem="N7x-lH-1k6" firstAttribute="centerY" secondItem="2gk-2v-STy" secondAttribute="centerY" id="mCe-49-Dh4"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="genderSegmentedControl" destination="mVf-gX-u6i" id="wdA-EC-xeX"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="60" id="PJO-03-ToT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCellIdentifier" rowHeight="60" id="PJO-03-ToT" customClass="SwitchTableViewCell" customModule="FacesterGram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="212" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PJO-03-ToT" id="P2Z-u3-fWS">
@@ -171,6 +177,9 @@
                                                 <constraint firstAttribute="width" constant="49" id="wSz-4I-ol8"/>
                                             </constraints>
                                             <color key="onTintColor" red="0.42745098040000001" green="0.77394291193355702" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="selectionSwitchDidChange:" destination="PJO-03-ToT" eventType="valueChanged" id="DTm-IU-bej"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                     <constraints>
@@ -180,6 +189,10 @@
                                         <constraint firstItem="YA4-v4-Vv9" firstAttribute="centerY" secondItem="P2Z-u3-fWS" secondAttribute="centerY" id="v0Z-Dl-NL2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="optionLabel" destination="W1b-uI-eq5" id="jPJ-Vu-MFV"/>
+                                    <outlet property="selectionSwitch" destination="YA4-v4-Vv9" id="an4-JN-wfa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
