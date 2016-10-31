@@ -19,6 +19,11 @@ class SwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var optionLabel: UILabel!
     @IBOutlet weak var selectionSwitch: UISwitch!
     
+    internal func updateElements(key: String, value: Bool) {
+        self.optionLabel.text = key
+        self.selectionSwitch.isOn = value
+    }
+    
     @IBAction func selectionSwitchDidChange(_ sender: UISwitch) {
         self.delegate?.selectionDidChange(option: optionLabel.text!, value: sender.isOn)
     }

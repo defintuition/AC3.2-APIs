@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum SettingsSectionIdentifier {
+    case resultsSlider, genderSegment, nationalitySwitches
+}
+
 class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -24,6 +28,9 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: - Tableview Delegate/Datasource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 2 {
+            return SettingsManager.manager.sortedNationalityKeys.count
+        }
         return 1
     }
     
@@ -47,7 +54,7 @@ class SettingsTableViewController: UITableViewController {
                 sliderCell.delegate = SettingsManager.manager
             }
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: SliderTableViewCell.cellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: SegmentedTableViewCell.cellIdentifier, for: indexPath)
             
             if let segmentedCell: SegmentedTableViewCell = cell as? SegmentedTableViewCell {
                 segmentedCell.updateSelectedSegment(gender: SettingsManager.manager.gender)
@@ -55,10 +62,23 @@ class SettingsTableViewController: UITableViewController {
             }
             
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.cellIdentifier, for: indexPath)
+            
+            if let switchCell: SwitchTableViewCell = cell as? SwitchTableViewCell {
+                
+                let key: String = SettingsManager.manager.sortedNationalityKeys[indexPath.row]
+                switchCell.updateElements(key: key, value: SettingsManager.manager.userNationalitySwitchStatus[key]!)
+                switchCell.delegate = SettingsManager.manager
+            }
         }
         
         return cell
+    }
+    
+    // We're going to give our sections a little bit of distinction
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return nil
     }
 
 }
