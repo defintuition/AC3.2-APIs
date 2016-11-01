@@ -90,7 +90,8 @@ internal class APIRequestManager {
     
     // solution to "Advanced": https://github.com/C4Q/AC3.2-APIs#resources-for-advanced
     func getUsers(count: Int = 1, gender: UserGender = SettingsManager.manager.gender, nationality: [UserNationality] = SettingsManager.manager.validNationalities(), completion: @escaping ((Data?)->Void)) {
-//        let endpoint: URL = URL(string: "https://randomuser.me/api/?results=\(count)&gender=\(gender.rawValue)&nat=\(nationality.rawValue)")!
+        // original solution
+        // let endpoint: URL = URL(string: "https://randomuser.me/api/?results=\(count)&gender=\(gender.rawValue)&nat=\(nationality.rawValue)")!
         
         // using "Expert" solution to generate the appropriate URL
         let endpoint: URL = RandomUserURLFactory.manager.endpoint(users: count, nationality: nationality, gender: gender)

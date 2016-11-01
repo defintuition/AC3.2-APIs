@@ -29,7 +29,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Tableview Delegate/Datasource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
-            return SettingsManager.manager.sortedNationalityKeys.count
+            return SettingsManager.manager.userNationalitySwitchStatus.keys.count
         }
         return 1
     }
@@ -67,7 +67,7 @@ class SettingsTableViewController: UITableViewController {
             if let switchCell: SwitchTableViewCell = cell as? SwitchTableViewCell {
                 
                 let key: String = SettingsManager.manager.sortedNationalityKeys[indexPath.row]
-                switchCell.updateElements(key: key, value: SettingsManager.manager.userNationalitySwitchStatus[key]!)
+                switchCell.updateElements(key: key, value: SettingsManager.manager.userNationalitySwitchStatus[UserNationality(rawValue: key)!]!)
                 switchCell.delegate = SettingsManager.manager
             }
         }

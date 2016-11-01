@@ -29,9 +29,7 @@ enum UserNationality: String {
     }
     
     static func allNatEnums() -> [UserNationality] {
-        return UserNationality.allNat().map({ (nat: String) -> UserNationality in
-            return UserNationality(rawValue: nat)!
-        })
+        return [AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NL, NZ, TR, US]
     }
 }
 
@@ -48,9 +46,7 @@ enum UserField: String {
     }
     
     static func allFieldEnums() -> [UserField] {
-        return UserField.allFields().map({ (field: String) -> UserField in
-            return UserField(rawValue: field)!
-        })
+        return [gender, name, location, email, login, id, picture, nat]
     }
 }
 
@@ -62,12 +58,30 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
     var included: [UserField]
     
     // SwitchCellDelegate var
-    var userNationalitySwitchStatus: [String : Bool]
-    var userFieldsSwitchStatus: [String : Bool]
+    var userNationalitySwitchStatus: [UserNationality : Bool] = [
+        UserNationality.AU : true, UserNationality.BR: true,
+        UserNationality.CA : true, UserNationality.CH : true,
+        UserNationality.DE : true, UserNationality.DK : true,
+        UserNationality.ES : true, UserNationality.FI : true,
+        UserNationality.FR : true, UserNationality.GB : true,
+        UserNationality.IE : true, UserNationality.IR : true,
+        UserNationality.NL : true, UserNationality.NZ : true,
+        UserNationality.TR : true, UserNationality.US : true
+    ]
+    var userFieldsSwitchStatus: [UserField : Bool] = [
+        UserField.gender : true, UserField.name : true,
+        UserField.location : true, UserField.email : true,
+        UserField.login : true, UserField.id : true,
+        UserField.picture : true, UserField.nat : true
+    ]
     
     // We need to ensure a specified order
-    var sortedNationalityKeys: [String]
-    var sortedFieldKeys: [String]
+    var sortedNationalityKeys: [String] {
+        return userNationalitySwitchStatus.keys.map{ $0.rawValue }.sorted(by: >)
+    }
+    var sortedFieldKeys: [String] {
+        return userFieldsSwitchStatus.keys.map { $0.rawValue }.sorted(by: >)
+    }
     
     let minResults: Int = 1
     let maxResults: Int = 200
@@ -78,25 +92,6 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
         gender = .both
         nationality = UserNationality.allNatEnums()
         included = UserField.allFieldEnums()
-        
-        // define a closure intended to create a dictionary by iterrating over an array of String,
-        // and using the String as the key for a Bool value corresponding to if the switch cell option
-        // should be currently true or false
-        let dictionaryReduce = { (dict: [String: Bool], option: String ) -> [String : Bool] in
-            var reduceDict = dict
-            reduceDict[option] = true
-            return reduceDict
-        }
-        
-        // kinda weird, but the reduce function signature is 
-        // func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) throws -> Result) rethrows -> Result
-        // 
-        // In this particular case, Result is of type [String : Bool] and Element is of type String
-        userNationalitySwitchStatus = UserNationality.allNat().reduce([String : Bool](), dictionaryReduce)
-        userFieldsSwitchStatus = UserField.allFields().reduce([String : Bool](), dictionaryReduce)
-        
-        sortedNationalityKeys = userNationalitySwitchStatus.keys.sorted(by: <)
-        sortedFieldKeys = userFieldsSwitchStatus.keys.sorted(by: <)
     }
     
     func updateNumberOfResults(_ results: Int) {
@@ -112,29 +107,18 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
     }
     
     // MARK: - Helpers
-    internal func validNationalities() -> [UserNationality] {
-        let allValidNats: [String] = validValues(self.userNationalitySwitchStatus)
-        
-        return allValidNats.flatMap({ (nat: String) -> UserNationality? in
-            return UserNationality(rawValue: nat)
-        })
+    func validNationalities() -> [UserNationality] {
+        return validValues(self.userNationalitySwitchStatus)
     }
     
-    internal func validFields() -> [UserNationality] {
-        let allValidFields: [String] = validValues(self.userFieldsSwitchStatus)
-        
-        return allValidFields.flatMap({ (nat: String) -> UserNationality? in
-            return UserNationality(rawValue: nat)
-        })
-    }
-    
-    private func validValues(_ dict: [String : Bool]) -> [String] {
-        return dict.flatMap({ (key: String, value: Bool) -> String? in
-            if value {
-                return key
+    func validValues<T: Hashable>(_ dict: [T : Bool]) -> [T] {
+        var returnValues: [T] = []
+        for (key, value) in dict {
+            if value == true {
+                returnValues.append(key)
             }
-            return nil
-        })
+        }
+        return returnValues
     }
     
     
@@ -153,12 +137,12 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
         
         // we maintain two internal dictionaries corresponding to our nationalities and fields
         // We do a nil-check to see if we can create the enum using the String option passed
-        if let _ = UserNationality(rawValue: option) {
-            self.userNationalitySwitchStatus[option] = value
+        if let userNationality = UserNationality(rawValue: option) {
+            self.userNationalitySwitchStatus[userNationality] = value
         }
         
-        if let _ = UserField(rawValue: option) {
-            self.userFieldsSwitchStatus[option] = value
+        if let userField = UserField(rawValue: option) {
+            self.userFieldsSwitchStatus[userField] = value
         }
     }
     
