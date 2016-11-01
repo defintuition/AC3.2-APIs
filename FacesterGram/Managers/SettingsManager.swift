@@ -17,17 +17,6 @@ enum UserNationality: String {
     case AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NL, NZ, TR, US
     case all = ""
     
-    static func allNat() -> [String] {
-        return [
-            UserNationality.AU.rawValue, UserNationality.BR.rawValue, UserNationality.CA.rawValue,
-            UserNationality.CH.rawValue, UserNationality.DE.rawValue, UserNationality.DK.rawValue,
-            UserNationality.ES.rawValue, UserNationality.FI.rawValue, UserNationality.FR.rawValue,
-            UserNationality.GB.rawValue, UserNationality.IE.rawValue, UserNationality.IR.rawValue,
-            UserNationality.NL.rawValue, UserNationality.NZ.rawValue, UserNationality.TR.rawValue,
-            UserNationality.US.rawValue
-        ]
-    }
-    
     static func allNatEnums() -> [UserNationality] {
         return [AU, BR, CA, CH, DE, DK, ES, FI, FR, GB, IE, IR, NL, NZ, TR, US]
     }
@@ -36,14 +25,6 @@ enum UserNationality: String {
 enum UserField: String {
     case gender, name, location, email, login, id, picture, nat
     case none = ""
-    
-    static func allFields() -> [String] {
-        return [
-            UserField.gender.rawValue, UserField.name.rawValue, UserField.location.rawValue,
-            UserField.email.rawValue, UserField.login.rawValue, UserField.id.rawValue,
-            UserField.picture.rawValue, UserField.nat.rawValue
-        ]
-    }
     
     static func allFieldEnums() -> [UserField] {
         return [gender, name, location, email, login, id, picture, nat]
@@ -57,7 +38,7 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
     var nationality: [UserNationality]
     var included: [UserField]
     
-    // SwitchCellDelegate var
+    // SwitchCellDicts
     var userNationalitySwitchStatus: [UserNationality : Bool] = [
         UserNationality.AU : true, UserNationality.BR: true,
         UserNationality.CA : true, UserNationality.CH : true,
