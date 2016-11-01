@@ -87,6 +87,48 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
         }
     }
     
+    // MARK: - UserDefaults
+    func saveSettings() {
+        let defaults = UserDefaults.standard
+        
+        var formattedNats: [String : Bool] = [:]
+        for nat in self.sortedNationalityKeys {
+            formattedNats[nat] = userNationalitySwitchStatus[UserNationality(rawValue: nat)!]!
+        }
+        
+        defaults.set(formattedNats, forKey: "UserNationalityFilterKey")
+        defaults.set(gender.rawValue, forKey: "UserGenderFilterKey")
+        defaults.set(results, forKey: "UserResultsFilterKey")
+    }
+    
+    func loadSettings() {
+        
+        let defaults = UserDefaults.standard
+        
+        if let userNatFilter: [String : Bool] = defaults.value(forKey: "UserNationalityFilterKey") as? [String : Bool] {
+            print("Loaded Nat Filter Settings")
+            
+            var reformedNatStatus: [UserNationality : Bool] = [:]
+            for (natRawValue, status) in userNatFilter {
+                reformedNatStatus[UserNationality(rawValue: natRawValue)!] = status
+            }
+            
+            self.userNationalitySwitchStatus = reformedNatStatus
+        }
+        
+        if let userGenderFilterRaw: String = defaults.value(forKey: "UserGenderFilterKey") as? String,
+            let userGenderFilter: UserGender = UserGender(rawValue: userGenderFilterRaw) {
+            print("Loaded Gender Filter Settings")
+            self.gender = userGenderFilter
+        }
+        
+        if let userResultsFilter: Int = defaults.value(forKey: "UserResultsFilterKey") as? Int {
+            print("Loaded Results Filter Settings")
+            self.results = userResultsFilter
+        }
+    
+    }
+    
     // MARK: - Helpers
     func validNationalities() -> [UserNationality] {
         return validValues(self.userNationalitySwitchStatus)
@@ -106,11 +148,13 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
     // MARK: - Slider Cell Delegate
     func sliderValueChanged(_ value: Int) {
         self.updateNumberOfResults(value)
+        self.saveSettings()
     }
     
     // MARK: - Segmented Cell Delegate
     func segmentedValueChanged(_ gender: UserGender) {
         self.gender = gender
+        self.saveSettings()
     }
     
     // MARK: - Switch Cell Delegate
@@ -125,6 +169,8 @@ internal class SettingsManager: SliderCellDelegate, SegmentedCellDelegate, Switc
         if let userField = UserField(rawValue: option) {
             self.userFieldsSwitchStatus[userField] = value
         }
+        
+        self.saveSettings()
     }
     
 }
