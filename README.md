@@ -1,8 +1,22 @@
 # AC3.2-APIs: Intro
 ---
-### Solutions Branch:
+### Solutions Table of Contents:
 
-1. [Full solution up to part 2 (not yet complete)](https://github.com/C4Q/AC3.2-APIs/tree/2_full-solutions)
+1. Part 1
+ 1. [Exercise Problem #1](https://github.com/C4Q/AC3.2-APIs/commit/eac9a12b045b9d8e429bea2455d8f464dc6df856)
+ 2. [Exercise Problem #2](https://github.com/C4Q/AC3.2-APIs/commit/95d7ff70877ecfae063ca54535e3f4e44366be02)
+ 3. [Exercise Problem #3](https://github.com/C4Q/AC3.2-APIs/commit/360b01f2c471790af8e9785abb0afa755e0ccbb3)
+ 4. [Advanced Solution](https://github.com/C4Q/AC3.2-APIs/commit/50ea9acef5f4b02a99a9adc12f079b36570d08b5)
+ 5. [Expert Solution](https://github.com/C4Q/AC3.2-APIs/commit/031933e726c840aeab8682ce46edcff09382997b)
+2. Part 2
+ 1. [Start of Project](https://github.com/C4Q/AC3.2-APIs/tree/2_part_II_setup)
+ 2. [Full Solutions (Part 1 & 2)](https://github.com/C4Q/AC3.2-APIs/tree/2_full-solutions)
+ 3. Answers to [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) exercises (TBD)
+3. Part 3
+ 1. [Final code for lesson](https://github.com/C4Q/AC3.2-APIs/tree/3_userDefaults)
+ 2. Answers for exerices (TBD)
+
+Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) are not all covered, even in the "Full Solution" link. 
 
 ---
 ### Contents
@@ -423,25 +437,3 @@ Examples:
 |---|---|
 |Input| `RandomUserURLFactory.manager.endpoint(users: 2, nationality: [.AU,.BR,.GB], gender: .noPreference)` |
 |Output| `https://randomuser.me/api/?results=2&nat=AU,BR,GB&gender=` |
-
-
----
-#### 2. Error Handling Exercise (To be done after error handling lesson)
-
-Part 1: Returning an error:
-
-Printing out that an error has occurred is helpful and all, but it's not exactly the best way to handle errors. The point of errors is that you can detect them and then deal with them "gracefully". With that in mind, we're going to have our `users(from:)` function potentially return an `Error`. Change the function to `static func users(from data: Data) -> ([User]?, UserError?)` and update the code so that each one of the `guard else` statement returns a different error corresponding to the casting that failed.
-Note: `UserError` will be an enum that conforms to `Error` and has multiple cases for each of the potential errors. 
-
-__Advanced__
-
-Returning a tuple is fine, but let's instead define a new tuple called `UserParseResults` that is of type `([User]?, UserError?)`
-
-#### Resources for Advanced:
-
-1. [Swift Typealias to the Rescue](https://medium.com/swift-programming/swift-typealias-to-the-rescue-b1027fc571e3#.mhysgw83q)
-2. [Swift Typealiases - Ash Furrow via Artsy Blog](http://artsy.github.io/blog/2016/06/24/typealias-for-great-good/)
-
-__Expert__
-
-Instead of errors returned, have your `users(from:)` `throw` a `UserError`. Update your function calls in `viewDidLoad` to account for this change. 
