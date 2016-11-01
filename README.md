@@ -1,5 +1,24 @@
 # AC3.2-APIs: Intro
 ---
+### Solutions Table of Contents:
+
+1. Part 1
+ 1. [Exercise Problem #1](https://github.com/C4Q/AC3.2-APIs/commit/eac9a12b045b9d8e429bea2455d8f464dc6df856)
+ 2. [Exercise Problem #2](https://github.com/C4Q/AC3.2-APIs/commit/95d7ff70877ecfae063ca54535e3f4e44366be02)
+ 3. [Exercise Problem #3](https://github.com/C4Q/AC3.2-APIs/commit/360b01f2c471790af8e9785abb0afa755e0ccbb3)
+ 4. [Advanced Solution](https://github.com/C4Q/AC3.2-APIs/commit/50ea9acef5f4b02a99a9adc12f079b36570d08b5)
+ 5. [Expert Solution](https://github.com/C4Q/AC3.2-APIs/commit/031933e726c840aeab8682ce46edcff09382997b)
+2. Part 2
+ 1. [Start of Project](https://github.com/C4Q/AC3.2-APIs/tree/2_part_II_setup)
+ 2. [Full Solutions (Part 1 & 2)](https://github.com/C4Q/AC3.2-APIs/tree/2_full-solutions)
+ 3. Answers to [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) exercises (TBD)
+3. Part 3
+ 1. [Final code for lesson](https://github.com/C4Q/AC3.2-APIs/tree/3_userDefaults)
+ 2. Answers for exerices (TBD)
+
+Note: The exercises outlined in [ExercisesREADME](https://github.com/C4Q/AC3.2-APIs/blob/master/Part%20II/ExercisesREADME.md) are not all covered, even in the "Full Solution" link. 
+
+---
 ### Contents
 0. Intro
  1. [Readings](https://github.com/C4Q/AC3.2-APIs/blob/master/README.md#readings)
@@ -41,17 +60,17 @@
 ### Resources:
 1. [Postman](https://www.getpostman.com/) - Free tool to test API requests
 2. [Random User API](https://randomuser.me/) - Simple API useful for simple user creation
+3. [Google Geocoding API: Intro](https://developers.google.com/maps/documentation/geocoding/intro)
 
 ---
 ### Objectives
 
-1. Introduce the concept of web based APIs
-2. Give examples of popular webservices as being APIs to reinforce their ubiquity
-3. Frame using APIs as being able to develop amazing apps that would not be possible on your own or without large development teams
-4. Explain JSON a bit and show how to view some simple JSON using the Maps Geocode API
-5. Bring in API documentation as what defines which requests are possible, and what their responses will be
+1. Introduce the concept of web-based APIs along with examples of popular webservices
+2. Frame using APIs as being able to develop amazing apps that would not be possible on your own or without large development teams
+4. Further dive into JSON by exploring Google Geocode responses
+5. Explore API documentation to understand how an API defines its inputs and outputs
 6. Introduce Postman as a utility for quickly testing APIs
-7. Search Geocode API in Postman
+7. Begin working on iFacesterGram
 
 ---
  
@@ -108,12 +127,8 @@ As mentioned before, API's define a standard for how software can communicate. M
  ![Error message documentation](./Images/error_message.png)
  ![Status Codes documentation](./Images/status_codes.png)
   
-<details> 
-  <summary> Try it out: </summary>
-    Switch out to Chrome and plug in the (URL)[https://developers.google.com/places/web-service/search] and scroll down the "Search" section
- 
-  The above is just an example to give background to the JSON response we got earlier. If we check out https://developers.google.com/places/web-service/search we'll be able to see every possible request and response that can be made by the API.
-</details>
+  
+> If we check out https://developers.google.com/maps/documentation/geocoding/intro we'll be able to see every possible request and response that can be made by the API.
 
 ----
 ### Trying out an API
@@ -126,9 +141,10 @@ So looking at our previous request:
  
 <details>
   <summary> Example 1: Adding An Address to the API call </summary>
-  Go back to your prior request and add the "address" key along with a "value" of the address of C4Q
-  For example: http://maps.googleapis.com/maps/api/geocode/json?address=%2243-06%2045th%20Street%22
-  Note: Parameters appear following a single ? and spaces are replaced by %20 for the actual request, but the google api will understand the request the exact same way as if you put in "43-06 45th Street"
+Go back to your prior request and add the "address" key along with a "value" of the address of C4Q
+For example: http://maps.googleapis.com/maps/api/geocode/json?address=%2243-06%2045th%20Street%22
+
+Note: Parameters appear following a single ? and spaces are replaced by %20 for the actual request, but the google api will understand the request the exact same way as if you put in "43-06 45th Street"
 </details>
 
 <details>
@@ -138,7 +154,7 @@ So looking at our previous request:
   3. All of these results are listed in the API's documentation for this kind of response, so we will always know what to expect
 </details>
 
-Plugging away in a webbrowser is a lightweight way to test out an API, but we can get some real power by using some utilities specifically meant for making API requests.
+Plugging away in a web browser is a lightweight way to test out an API, but we can get some real power by using some utilities specifically meant for making API requests.
  
  -----
 ### [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)
@@ -185,7 +201,7 @@ Try this out:
 
 Think back to the `URLSession` demo: I was calling our hosted `json` an "API endpoint". And in some ways it does meet the requirement: we could send a request to the `URL` and we would receive a formatted `json` response. And at its core, an API is just a way to request and receive  info based on a set of parameters. Though, in practice API's are a bit more detailed than simply plugging in a `URL` endpoint and parsing out any data that gets returned. And it's likely that you'll be working with API's with incredible frequency in your development careers. 
 
-Making test requests is a big part of software, and iOS, development. So much so that a fellow developer created the myJson site after he became annoyed that there were no simple ways of hosting json with the intention of testing network requests and json parsing. Making web requests, specifically to service APIs, and parsing the returned response is going to be a part of a vast majority of iOS apps. Think about all the apps you use that you can log in with Facebook! That's it's own API that needs integration in an iOS app.
+Making test requests is a big part of software, and iOS, development. So much so that a fellow developer created the myjson site after he became annoyed that there were no simple ways of hosting json with the intention of testing network requests and json parsing. Making web requests, specifically to service APIs, and parsing the returned response is going to be a part of a vast majority of iOS apps. Think about all the apps you use that you can log in with Facebook! That's it's own API that needs integration in an iOS app.
 
 Fortunately, since working with API's is such a ubiquoitous thing for all developers (especially ios, android and web) there are quite a few resources and tools available to make development as smooth as possible. Some of the most important tools are those that let us test out API requests to verify that our inputs and outputs are correct and what we expect. 
 
@@ -306,12 +322,12 @@ It needs the <code>@escaping</code> key word for the callback closure
 
 <details>
 <summary> Design Hints </summary>
-A singleton needs two things: a class-level unchanging constant <code>manager</code>, and a hidden default initializer
+A singleton needs two things: a class-level unchanging constant <code>manager</code>, and a private default initializer.
 Its quite helpful to define unchanging properties (such as the URL for the api) as a <code>static let</code>
 </details>
 
-> _The more you know!_
-Notice how there is a _ton_ of useless messages being printed to your console? That's an annoying new addition to the latest version of Xcode. To silence this noise, hold down <keyboard>Option</keyboard> while clicking on the Run button (with the play button icon) in Xcode to bring up the `Scheme Manager`. Under "Environment Variables", add a new entry with the name `OS_ACTIVITY_MODE` with a value of `disable`. Now click "Run" and see a much cleaner console output! 
+> __The more you know!__
+> Notice how there is a _ton_ of useless messages being printed to your console? That's an annoying new addition to the latest version of Xcode. To silence this noise, hold down <kbd>Option</kbd> while clicking on the Run button (with the play button icon) in Xcode to bring up the "Scheme Manager". Under "Environment Variables", add a new entry with the name `OS_ACTIVITY_MODE` with a value of `disable`. Now click "Run" and see a much cleaner console output! 
 
 ---
 ### Parsing `Data` in our model
@@ -337,9 +353,14 @@ In `viewDidLoad` update the call to be:
   }
 ```
 
+#### Lecture Notes Update:
+
+1. Ignore the `let id: String` constant in `User` for now (this value is occasionally `nil`)
+ - Alternatively, if you've done the normal casting and it all works, adjust the `id` parameter to be an `Optional`
+2. You'll run into an issue with casting from `"location"` if you attempt to cast it's contents to `[String : String]`. The reason being that the value for the `postalCode` key is an `Integer`. So the cast will fail if you try to set it as a `[String: String]`. There are different approaches to how to handle this, but it might be easiest to get the value of `jsonDict["location"] as? [String : AnyObject]`, followed by getting the value for the `state` and `city` keys as `String`
+
 #### Handling Errors
 As you parse out the `Any` object into arrays and dictionaries, I would recommend adding `print` statements along the way to see where something is working or failing
-
 
 #### Populating the cells simply
 Set the cell's `textLabel` to display a user's first and last name, and the `detailLabel` to display their username
@@ -416,25 +437,3 @@ Examples:
 |---|---|
 |Input| `RandomUserURLFactory.manager.endpoint(users: 2, nationality: [.AU,.BR,.GB], gender: .noPreference)` |
 |Output| `https://randomuser.me/api/?results=2&nat=AU,BR,GB&gender=` |
-
-
----
-#### 2. Error Handling Exercise (To be done after error handling lesson)
-
-Part 1: Returning an error:
-
-Printing out that an error has occurred is helpful and all, but it's not exactly the best way to handle errors. The point of errors is that you can detect them and then deal with them "gracefully". With that in mind, we're going to have our `users(from:)` function potentially return an `Error`. Change the function to `static func users(from data: Data) -> ([User]?, UserError?)` and update the code so that each one of the `guard else` statement returns a different error corresponding to the casting that failed.
-Note: `UserError` will be an enum that conforms to `Error` and has multiple cases for each of the potential errors. 
-
-__Advanced__
-
-Returning a tuple is fine, but let's instead define a new tuple called `UserParseResults` that is of type `([User]?, UserError?)`
-
-#### Resources for Advanced:
-
-1. [Swift Typealias to the Rescue](https://medium.com/swift-programming/swift-typealias-to-the-rescue-b1027fc571e3#.mhysgw83q)
-2. [Swift Typealiases - Ash Furrow via Artsy Blog](http://artsy.github.io/blog/2016/06/24/typealias-for-great-good/)
-
-__Expert__
-
-Instead of errors returned, have your `users(from:)` `throw` a `UserError`. Update your function calls in `viewDidLoad` to account for this change. 
